@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Client 1</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        textarea { width: 100%; height: 120px; margin-top: 10px; }
+        button { padding: 10px 15px; margin-top: 10px; }
+        .box { margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+
+<h2>Client 1 (Offer)</h2>
+
+<div class="box">
+    <button id="createOffer">Create Offer</button>
+    <textarea id="offer" placeholder="Generated offer"></textarea>
+</div>
+
+<div class="box">
+    <textarea id="answer" placeholder="Paste answer here"></textarea>
+    <button id="setAnswer">Set Answer</button>
+</div>
+
+<hr>
+
+<div class="box">
+    <textarea id="chat" placeholder="Chat messages..." readonly></textarea>
+    <input type="text" id="msg" placeholder="Type message…">
+    <button id="send">Send</button>
+</div>
+
+<script>
+let pc = new RTCPeerConnection();
+let channel = pc.createDataChannel("chat");
+
+channel.onmessage = (e) => {
+    chat.value += "Peer: " + e.data + "\n";
+};
+
+createOffer.onclick = async () => {
+    let offer = await pc.createOffer();
+    await pc.setLocalDescription(offer);
+    offer.value = JSON.stringify(offer);
+};
+
+setAnswer.onclick = async () => {
+    let ans = JSON.parse(answer.value);
+    await pc.setRemoteDescription(ans);
+};
+
+pc.onicecandidate = (e) => {
+    if (e.candidate === null) {
+        offer.value = JSON.stringify(pc.localDescription);
+    }
+};
+
+send.onclick = () => {
+    let text = msg.value;
+    channel.send(text);
+    chat.value += "Me: " + text + "\n";
+    msg.value = "";
+};
+</script>
+
+</body>
+</html>
