@@ -7,22 +7,38 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="login-page">
-        <div class="login-container">
+    <div id="home-page">
+        <div class="home-container">
             <h1>Cyber Chat</h1>
-            <input type="text" id="name" placeholder="Enter your name">
-            <input type="password" id="key" placeholder="Enter your key">
-            <button id="confirm-btn">Confirm</button>
+            <button id="create-group-btn">Create Group</button>
+            <button id="join-group-btn">Join Group</button>
+        </div>
+
+        <div id="create-group-form" class="hidden">
+            <input type="text" id="creator-name" placeholder="Enter your name">
+            <button id="create-btn">Create</button>
+        </div>
+
+        <div id="join-group-form" class="hidden">
+            <input type="text" id="joiner-name" placeholder="Enter your name">
+            <input type="text" id="group-key" placeholder="Enter group key">
+            <button id="join-btn">Join</button>
         </div>
     </div>
+
     <div id="loading-page" class="hidden">
         <div class="loader"></div>
         <p>Connecting...</p>
     </div>
+
     <div id="chat-page" class="hidden">
         <div class="chat-container">
             <div class="chat-header">
                 <h2>Cyber Chat</h2>
+                <div class="members-panel">
+                    <h3>Members</h3>
+                    <ul id="members-list"></ul>
+                </div>
             </div>
             <div class="chat-messages">
                 <!-- Messages will be appended here -->
@@ -33,5 +49,6 @@
             </div>
         </div>
     </div>
+    <script src="app.js"></script>
 </body>
 </html>

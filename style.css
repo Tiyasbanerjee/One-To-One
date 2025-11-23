@@ -14,30 +14,61 @@ body {
     display: none;
 }
 
-/* Login Page */
-#login-page {
+/* Home Page */
+#home-page {
     width: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.login-container {
+.home-container {
     background-color: #1a1a1a;
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
     text-align: center;
+    margin-bottom: 20px;
 }
 
-.login-container h1 {
+.home-container h1 {
     margin-bottom: 30px;
     font-size: 2.5em;
     text-transform: uppercase;
     letter-spacing: 5px;
 }
 
-.login-container input {
+.home-container button {
+    width: 100%;
+    padding: 15px;
+    background-color: #00ff00;
+    color: #0d0d0d;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+    letter-spacing: 2px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    margin-bottom: 10px;
+}
+
+.home-container button:hover {
+    background-color: #00cc00;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.8);
+}
+
+#create-group-form, #join-group-form {
+    background-color: #1a1a1a;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+    text-align: center;
+    width: 300px;
+}
+
+#create-group-form input, #join-group-form input {
     width: 100%;
     padding: 15px;
     margin-bottom: 20px;
@@ -48,7 +79,7 @@ body {
     box-sizing: border-box;
 }
 
-.login-container button {
+#create-group-form button, #join-group-form button {
     width: 100%;
     padding: 15px;
     background-color: #00ff00;
@@ -62,10 +93,11 @@ body {
     transition: background-color 0.3s, box-shadow 0.3s;
 }
 
-.login-container button:hover {
+#create-group-form button:hover, #join-group-form button:hover {
     background-color: #00cc00;
     box-shadow: 0 0 15px rgba(0, 255, 0, 0.8);
 }
+
 
 /* Loading Page */
 #loading-page {
@@ -115,6 +147,9 @@ body {
 .chat-header {
     padding: 20px;
     border-bottom: 1px solid #0080ff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .chat-header h2 {
@@ -125,10 +160,42 @@ body {
     text-align: center;
 }
 
+.members-panel {
+    width: 200px;
+    border-left: 1px solid #0080ff;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.members-panel h3 {
+    margin-top: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+#members-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#members-list li {
+    padding: 5px 0;
+}
+
+
 .chat-messages {
     flex-grow: 1;
     padding: 20px;
     overflow-y: auto;
+}
+
+.message {
+    margin-bottom: 10px;
+}
+
+.sender {
+    font-weight: bold;
 }
 
 .chat-messages::-webkit-scrollbar {
@@ -180,24 +247,30 @@ body {
 
 /* Responsive */
 @media (max-width: 768px) {
-    .login-container {
-        width: 80%;
-        padding: 30px;
-    }
-
     .chat-container {
         width: 95%;
         height: 95%;
+        flex-direction: column;
+    }
+    .members-panel {
+        width: 100%;
+        border-left: none;
+        border-top: 1px solid #0080ff;
     }
 }
 @media (max-width: 480px) {
-    .login-container {
+    .home-container {
         width: 90%;
         padding: 20px;
     }
 
-    .login-container h1 {
+    .home-container h1 {
         font-size: 2em;
+    }
+
+    #create-group-form, #join-group-form {
+        width: 90%;
+        padding: 20px;
     }
 
     .chat-container {
@@ -208,10 +281,12 @@ body {
 
     .chat-header {
         padding: 15px;
+        flex-direction: column;
     }
 
     .chat-header h2 {
         font-size: 1.5em;
+        margin-bottom: 10px;
     }
 
     .chat-messages {
