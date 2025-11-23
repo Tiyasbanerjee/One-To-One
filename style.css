@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;800&display=swap');
 
 :root {
-    --bg: #030712; /* Very dark blue/black */
-    --panel: #111827;
-    --primary: #3b82f6;
-    --success: #10b981;
-    --accent: #8b5cf6;
+    --bg: #0a0e14; 
+    --panel: #1a202c;
+    --primary: #00a99d;
+    --success: #28a745;
+    --accent: #4a90e2;
 }
 
 body {
@@ -20,7 +20,7 @@ body {
 .token-field {
     background: #000;
     border: 1px solid #374151;
-    color: #10b981;
+    color: var(--primary);
     font-family: 'JetBrains Mono', monospace;
     letter-spacing: -0.5px;
     font-size: 0.75rem;
@@ -38,13 +38,13 @@ body {
 @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
 .pulse-ring {
-    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
-    animation: pulse-blue 2s infinite;
+    box-shadow: 0 0 0 0 rgba(0, 169, 157, 0.7);
+    animation: pulse-teal 2s infinite;
 }
-@keyframes pulse-blue {
-    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7); }
-    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
-    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+@keyframes pulse-teal {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 169, 157, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(0, 169, 157, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 169, 157, 0); }
 }
 
 /* Custom Scrollbar */

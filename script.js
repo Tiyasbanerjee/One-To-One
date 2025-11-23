@@ -1,5 +1,10 @@
 // --- CONFIG ---
 const rtcConfig = { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] };
+const randomAliases = [
+    'Alpha', 'Bravo', 'Charlie', 'Delta', 'Echo', 'Foxtrot', 'Golf', 'Hotel', 'India',
+    'Juliett', 'Kilo', 'Lima', 'Mike', 'November', 'Oscar', 'Papa', 'Quebec', 'Romeo',
+    'Sierra', 'Tango', 'Uniform', 'Victor', 'Whiskey', 'X-ray', 'Yankee', 'Zulu'
+];
 
 // --- STATE ---
 let pc, dc;
@@ -27,6 +32,8 @@ const copyToClip = id => {
     el.style.borderColor = '#10b981';
     setTimeout(() => el.style.borderColor = original, 500);
 };
+
+const getRandomAlias = () => randomAliases[Math.floor(Math.random() * randomAliases.length)];
 
 // --- HEX OPTIMIZED KEY GENERATION ---
 function generateHexKey(username) {
@@ -57,7 +64,7 @@ function generateUserColor(name) {
 
 // --- LOGIC: HOST ---
 async function startHostFlow() {
-    const name = $('username').value.trim() || 'ADMIN';
+    const name = $('username').value.trim() || getRandomAlias();
     state.user = name;
     state.color = generateUserColor(name);
     state.isAdmin = true;
@@ -99,7 +106,7 @@ async function finalizeHost() {
 
 // --- LOGIC: JOIN ---
 async function startJoinFlow() {
-    const name = $('username').value.trim() || 'GUEST';
+    const name = $('username').value.trim() || getRandomAlias();
     state.user = name;
     state.color = generateUserColor(name);
     show('view-wizard');
