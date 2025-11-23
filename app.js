@@ -173,17 +173,24 @@ function assignColor(userName) {
 function addMessage(sender, message) {
     const messageElement = document.createElement('div');
     messageElement.classList.add('message');
-    
-    const senderElement = document.createElement('span');
+
+    if (sender === username) {
+        messageElement.classList.add('sent');
+    } else {
+        messageElement.classList.add('received');
+    }
+
+    const senderElement = document.createElement('div');
     senderElement.classList.add('sender');
     senderElement.textContent = sender;
-    if (!userColors[sender]) {
-        assignColor(sender);
+    if(userColors[sender]) {
+        senderElement.style.color = userColors[sender];
     }
-    senderElement.style.color = userColors[sender];
 
-    const textElement = document.createElement('span');
-    textElement.textContent = `: ${message}`;
+
+    const textElement = document.createElement('div');
+    textElement.classList.add('text');
+    textElement.textContent = message;
 
     messageElement.appendChild(senderElement);
     messageElement.appendChild(textElement);
