@@ -1,15 +1,28 @@
-const createGroupBtn = document.getElementById('create-group-btn');
-const joinGroupBtn = document.getElementById('join-group-btn');
-const createGroupForm = document.getElementById('create-group-form');
-const joinGroupForm = document.getElementById('join-group-form');
-const homePage = document.getElementById('home-page');
-const chatPage = document.getElementById('chat-page');
-const homeContainer = document.querySelector('.home-container');
+function openTab(evt, tabName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tab-content");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tab-link");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "flex";
+    evt.currentTarget.className += " active";
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelector(".tab-link.active").click();
+});
+
 const createBtn = document.getElementById('create-btn');
 const creatorNameInput = document.getElementById('creator-name');
 const joinBtn = document.getElementById('join-btn');
 const joinerNameInput = document.getElementById('joiner-name');
 const groupKeyInput = document.getElementById('group-key');
+const homePage = document.getElementById('home-page');
+const chatPage = document.getElementById('chat-page');
 const membersList = document.getElementById('members-list');
 const chatMessages = document.querySelector('.chat-messages');
 const messageInput = document.getElementById('message-input');
@@ -19,16 +32,7 @@ const userColors = {};
 let username = '';
 let pc;
 let dataChannel;
-
-createGroupBtn.addEventListener('click', () => {
-    homeContainer.classList.add('hidden');
-    createGroupForm.classList.remove('hidden');
-});
-
-joinGroupBtn.addEventListener('click', () => {
-    homeContainer.classList.add('hidden');
-    joinGroupForm.classList.remove('hidden');
-});
+let isAdmin = false;
 
 createBtn.addEventListener('click', () => {
     const creatorName = creatorNameInput.value;
@@ -38,9 +42,10 @@ createBtn.addEventListener('click', () => {
         
         homePage.classList.add('hidden');
         chatPage.classList.remove('hidden');
-        addMemberToList(creatorName);
+        addMemberToList(creatorName, true);
         assignColor(creatorName);
         
+        isAdmin = true;
         startWebRTC(true, groupKey);
     } else {
         alert('Please enter your name.');
@@ -54,11 +59,19 @@ joinBtn.addEventListener('click', () => {
     if (joinerName && groupKey) {
         username = joinerName;
         homePage.classList.add('hidden');
-        chatPage.classList.remove('hidden');
-        addMemberToList(joinerName);
-        assignColor(joinerName);
+        // Show loading screen
+        const loadingPage = document.getElementById('loading-page');
+        loadingPage.classList.remove('hidden');
 
-        startWebRTC(false, groupKey);
+        // Simulate a delay for joining
+        setTimeout(() => {
+            loadingPage.classList.add('hidden');
+            chatPage.classList.remove('hidden');
+            addMemberToList(joinerName, false);
+            assignColor(joinerName);
+
+            startWebRTC(false, groupKey);
+        }, 2000);
     } else {
         alert('Please enter your name and the group key.');
     }
@@ -68,7 +81,9 @@ sendBtn.addEventListener('click', () => {
     const message = messageInput.value;
     if (message) {
         addMessage(username, message);
-        dataChannel.send(JSON.stringify({type: 'chat', sender: username, message: message}));
+        if (dataChannel) {
+            dataChannel.send(JSON.stringify({type: 'chat', sender: username, message: message}));
+        }
         messageInput.value = '';
     }
 });
@@ -79,6 +94,7 @@ function startWebRTC(isCreator, groupKey) {
     pc.onicecandidate = (e) => {
         if (e.candidate) {
             // Send the candidate to the other peer
+            // This will be done through a signaling server in a real application
             console.log('ICE Candidate:', JSON.stringify(e.candidate));
         }
     };
@@ -90,9 +106,12 @@ function startWebRTC(isCreator, groupKey) {
         pc.createOffer()
             .then(offer => pc.setLocalDescription(offer))
             .then(() => {
-                // Send the offer to the other peer
+                // In a real app, you'd send this to a signaling server
                 console.log('Offer:', JSON.stringify(pc.localDescription));
-                prompt("Copy this offer and share it with the other user:", JSON.stringify(pc.localDescription));
+                const groupKeyElement = document.createElement('div');
+                groupKeyElement.innerHTML = `Share this group key with others: <strong>${groupKey}</strong><br><br>And this offer: <strong>${JSON.stringify(pc.localDescription)}</strong>`;
+                document.getElementById('create-group-form').appendChild(groupKeyElement);
+
             });
     } else {
         pc.ondatachannel = (e) => {
@@ -106,8 +125,7 @@ function startWebRTC(isCreator, groupKey) {
                 .then(() => pc.createAnswer())
                 .then(answer => pc.setLocalDescription(answer))
                 .then(() => {
-                    // Send the answer to the other peer
-                    console.log('Answer:', JSON.stringify(pc.localDescription));
+                    // In a real app, you'd send this to a signaling server
                     prompt("Copy this answer and share it with the creator:", JSON.stringify(pc.localDescription));
                 });
         }
@@ -117,14 +135,70 @@ function startWebRTC(isCreator, groupKey) {
 function setupDataChannel() {
     dataChannel.onopen = () => {
         console.log('Data channel is open');
+        dataChannel.send(JSON.stringify({type: 'join', sender: username}));
     };
 
     dataChannel.onmessage = (e) => {
         const data = JSON.parse(e.data);
         if (data.type === 'chat') {
             addMessage(data.sender, data.message);
+        } else if (data.type === 'join') {
+            if (isAdmin) {
+                const memberRequests = document.getElementById('member-requests');
+                const requestElement = document.createElement('div');
+                requestElement.classList.add('request');
+                requestElement.innerHTML = `
+                    <span>${data.sender} wants to join.</span>
+                    <div class="request-actions">
+                        <button onclick="acceptRequest('${data.sender}')">Accept</button>
+                        <button onclick="rejectRequest('${data.sender}')">Reject</button>
+                    </div>
+                `;
+                memberRequests.appendChild(requestElement);
+            }
+        } else if (data.type === 'welcome') {
+            data.members.forEach(member => {
+                if(member.name !== username) {
+                    addMemberToList(member.name, member.isAdmin);
+                }
+            });
+        } else if (data.type === 'new-member') {
+            addMemberToList(data.sender, false);
+        } else if (data.type === 'member-left') {
+            removeMemberFromList(data.sender);
         }
     };
+}
+
+function acceptRequest(newMemberName) {
+    // In a real app, you'd send a welcome message with the member list
+    const members = [];
+    document.querySelectorAll('#members-list li').forEach(li => {
+        members.push({name: li.textContent, isAdmin: li.dataset.isAdmin === 'true'});
+    });
+    dataChannel.send(JSON.stringify({type: 'welcome', members: members}));
+    
+    // Announce the new member to others
+    dataChannel.send(JSON.stringify({type: 'new-member', sender: newMemberName}));
+    addMemberToList(newMemberName, false);
+    
+    // Remove the request
+    const memberRequests = document.getElementById('member-requests');
+    const requestElement = Array.from(memberRequests.children).find(child => child.textContent.includes(newMemberName));
+    if (requestElement) {
+        memberRequests.removeChild(requestElement);
+    }
+}
+
+function rejectRequest(memberName) {
+    // In a real app, you'd send a rejection message
+    console.log(`Rejected ${memberName}`);
+    // Remove the request
+    const memberRequests = document.getElementById('member-requests');
+    const requestElement = Array.from(memberRequests.children).find(child => child.textContent.includes(memberName));
+    if (requestElement) {
+        memberRequests.removeChild(requestElement);
+    }
 }
 
 
@@ -151,15 +225,45 @@ function generateGroupKey(creatorName) {
     return `${hexKey}-${creatorName}`;
 }
 
-function addMemberToList(name) {
+function addMemberToList(name, isMemberAdmin) {
     const li = document.createElement('li');
     li.textContent = name;
+    li.dataset.isAdmin = isMemberAdmin;
     if (!userColors[name]) {
         assignColor(name);
     }
     li.style.color = userColors[name];
+
+    if(isAdmin && name !== username) {
+        const removeBtn = document.createElement('button');
+        removeBtn.textContent = 'Remove';
+        removeBtn.classList.add('remove-member-btn');
+        if(isAdmin) {
+            removeBtn.classList.add('admin');
+        }
+        removeBtn.onclick = () => {
+            removeMember(name);
+        };
+        li.appendChild(removeBtn);
+    }
+
     membersList.appendChild(li);
 }
+
+function removeMember(name) {
+    if(isAdmin) {
+        dataChannel.send(JSON.stringify({type: 'member-left', sender: name}));
+        removeMemberFromList(name);
+    }
+}
+
+function removeMemberFromList(name) {
+    const li = Array.from(membersList.children).find(child => child.textContent.startsWith(name));
+    if (li) {
+        membersList.removeChild(li);
+    }
+}
+
 
 function assignColor(userName) {
     const letters = '0123456789ABCDEF';

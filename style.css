@@ -25,65 +25,48 @@ body {
 
 /* Home Page */
 #home-page {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    width: 400px;
 }
 
-.home-container {
+.form-container {
     background-color: var(--secondary-bg-color);
-    padding: 50px;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    text-align: center;
-    margin-bottom: 30px;
+    overflow: hidden;
 }
 
-.home-container h1 {
-    margin-bottom: 40px;
-    font-size: 3em;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    color: var(--accent-color);
+.form-tabs {
+    display: flex;
 }
 
-.home-container button {
-    width: 200px;
-    padding: 15px;
-    background-color: var(--accent-color);
+.tab-link {
+    flex: 1;
+    padding: 20px;
+    background-color: var(--tertiary-bg-color);
     color: var(--text-color);
     border: none;
-    border-radius: 8px;
     cursor: pointer;
     font-size: 1.2em;
     font-weight: 500;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
-    margin: 10px;
+    transition: background-color 0.3s ease;
 }
 
-.home-container button:hover {
-    background-color: #ff5c77;
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(233, 69, 96, 0.4);
-}
-
-#create-group-form, #join-group-form {
+.tab-link.active {
     background-color: var(--secondary-bg-color);
+}
+
+.tab-content {
     padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    text-align: center;
-    width: 350px;
-    display: flex;
+    display: none;
     flex-direction: column;
     gap: 20px;
 }
 
-#create-group-form input, #join-group-form input {
+.tab-content.active {
+    display: flex;
+}
+
+.tab-content input {
     width: 100%;
     padding: 15px;
     border: 1px solid var(--tertiary-bg-color);
@@ -94,7 +77,7 @@ body {
     font-size: 1em;
 }
 
-#create-group-form button, #join-group-form button {
+.tab-content button {
     padding: 15px;
     background-color: var(--accent-color);
     color: var(--text-color);
@@ -107,7 +90,7 @@ body {
     transition: all 0.3s ease;
 }
 
-#create-group-form button:hover, #join-group-form button:hover {
+.tab-content button:hover {
     background-color: #ff5c77;
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(233, 69, 96, 0.4);
@@ -158,7 +141,24 @@ body {
     padding: 10px;
     border-bottom: 1px solid var(--tertiary-bg-color);
     font-size: 1.1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
+
+.remove-member-btn {
+    background-color: transparent;
+    color: var(--accent-color);
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    display: none;
+}
+
+.remove-member-btn.admin {
+    display: block;
+}
+
 
 .chat-area {
     flex-grow: 1;
@@ -262,6 +262,29 @@ body {
     background-color: #ff5c77;
     transform: translateY(-2px);
 }
+
+#member-requests {
+    margin-top: 20px;
+}
+
+.request {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid var(--tertiary-bg-color);
+}
+
+.request-actions button {
+    margin-left: 10px;
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 
 /* Responsive */
 @media (max-width: 768px) {

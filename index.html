@@ -11,21 +11,22 @@
 </head>
 <body>
     <div id="home-page">
-        <div class="home-container">
-            <h1>Cyber Chat</h1>
-            <button id="create-group-btn">Create Group</button>
-            <button id="join-group-btn">Join Group</button>
-        </div>
+        <div class="form-container">
+            <div class="form-tabs">
+                <button class="tab-link active" onclick="openTab(event, 'join-group-form')">Join Group</button>
+                <button class="tab-link" onclick="openTab(event, 'create-group-form')">Create Group</button>
+            </div>
 
-        <div id="create-group-form" class="hidden">
-            <input type="text" id="creator-name" placeholder="Enter your name">
-            <button id="create-btn">Create</button>
-        </div>
+            <div id="join-group-form" class="tab-content active">
+                <input type="text" id="joiner-name" placeholder="Enter your name">
+                <input type="text" id="group-key" placeholder="Enter group key">
+                <button id="join-btn">Join</button>
+            </div>
 
-        <div id="join-group-form" class="hidden">
-            <input type="text" id="joiner-name" placeholder="Enter your name">
-            <input type="text" id="group-key" placeholder="Enter group key">
-            <button id="join-btn">Join</button>
+            <div id="create-group-form" class="tab-content">
+                <input type="text" id="creator-name" placeholder="Enter your name">
+                <button id="create-btn">Create Group</button>
+            </div>
         </div>
     </div>
 
@@ -39,6 +40,9 @@
             <div class="members-panel">
                 <h3>Members</h3>
                 <ul id="members-list"></ul>
+                <div id="member-requests">
+                    <h3>Member Requests</h3>
+                </div>
             </div>
             <div class="chat-area">
                 <div class="chat-header">
