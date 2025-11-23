@@ -12,8 +12,20 @@ function openTab(evt, tabName) {
     evt.currentTarget.className += " active";
 }
 
+function showPage(pageId) {
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(page => {
+        if (page.id === pageId) {
+            page.classList.add('active');
+        } else {
+            page.classList.remove('active');
+        }
+    });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     document.querySelector(".tab-link.active").click();
+    showPage('home-page');
 });
 
 const createBtn = document.getElementById('create-btn');
@@ -21,8 +33,6 @@ const creatorNameInput = document.getElementById('creator-name');
 const joinBtn = document.getElementById('join-btn');
 const joinerNameInput = document.getElementById('joiner-name');
 const groupKeyInput = document.getElementById('group-key');
-const homePage = document.getElementById('home-page');
-const chatPage = document.getElementById('chat-page');
 const membersList = document.getElementById('members-list');
 const chatMessages = document.querySelector('.chat-messages');
 const messageInput = document.getElementById('message-input');
@@ -40,8 +50,7 @@ createBtn.addEventListener('click', () => {
         username = creatorName;
         const groupKey = generateGroupKey(creatorName);
         
-        homePage.classList.add('hidden');
-        chatPage.classList.remove('hidden');
+        showPage('chat-page');
         addMemberToList(creatorName, true);
         assignColor(creatorName);
         
@@ -58,15 +67,12 @@ joinBtn.addEventListener('click', () => {
 
     if (joinerName && groupKey) {
         username = joinerName;
-        homePage.classList.add('hidden');
-        // Show loading screen
-        const loadingPage = document.getElementById('loading-page');
-        loadingPage.classList.remove('hidden');
+        showPage('loading-page');
 
         // Simulate a delay for joining
         setTimeout(() => {
-            loadingPage.classList.add('hidden');
-            chatPage.classList.remove('hidden');
+            // In a real app, you would have logic to check if the join was successful
+            showPage('chat-page');
             addMemberToList(joinerName, false);
             assignColor(joinerName);
 

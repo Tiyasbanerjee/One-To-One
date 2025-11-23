@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="home-page">
+    <div id="home-page" class="page active">
         <div class="form-container">
             <div class="form-tabs">
                 <button class="tab-link active" onclick="openTab(event, 'join-group-form')">Join Group</button>
@@ -30,12 +30,12 @@
         </div>
     </div>
 
-    <div id="loading-page" class="hidden">
+    <div id="loading-page" class="page">
         <div class="loader"></div>
         <p>Connecting...</p>
     </div>
 
-    <div id="chat-page" class="hidden">
+    <div id="chat-page" class="page">
         <div class="chat-container">
             <div class="members-panel">
                 <h3>Members</h3>
