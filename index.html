@@ -3,22 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cyber Chat</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="welcome">
-
+    <div id="login-page">
+        <div class="login-container">
+            <h1>Cyber Chat</h1>
+            <input type="text" id="name" placeholder="Enter your name">
+            <input type="password" id="key" placeholder="Enter your key">
+            <button id="confirm-btn">Confirm</button>
+        </div>
     </div>
-    <div id="inisalize">
-
+    <div id="loading-page" class="hidden">
+        <div class="loader"></div>
+        <p>Connecting...</p>
     </div>
-    <div id="chart">
-
+    <div id="chat-page" class="hidden">
+        <div class="chat-container">
+            <div class="chat-header">
+                <h2>Cyber Chat</h2>
+            </div>
+            <div class="chat-messages">
+                <!-- Messages will be appended here -->
+            </div>
+            <div class="chat-input">
+                <input type="text" id="message-input" placeholder="Type a message...">
+                <button id="send-btn">Send</button>
+            </div>
+        </div>
     </div>
-    <div id="room_details">
-
-    </div>
-
 </body>
 </html>
