@@ -1,0 +1,22 @@
+{
+  "name": "one-to-one",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tiyasbanerjee/One-To-One.git"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Tiyasbanerjee/One-To-One/issues"
+  },
+  "homepage": "https://github.com/Tiyasbanerjee/One-To-One#readme",
+  "dependencies": {
+    "node-datachannel": "^0.33.2"
+  }
+}
