@@ -37,35 +37,24 @@ body {
     background-color: white;
 }
 
+#back-from-chat{
+    height: 90%;
+    aspect-ratio: 1/1;
 
-
-#return-from-chat-tri{
-    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#arrow-of-back-button{
     height: 0;
     width: 0;
-
-
-    border-right: 1.5em solid rgb(255, 0, 0);
-    border-top: 1.5em solid rgba(0, 128, 0, 0);
-    border-bottom: 1.5em solid rgba(0, 0, 255, 0);
-    
-    margin-left: 0.1em;
+    border-right: 1em solid rgb(114, 11, 224);
+    border-top: 1em solid transparent;
+    border-bottom: 1em solid transparent;
+    border-left: 0 solid transparent;
 }
-
-#return-from-chat-tri::after{
-  content: "";
-  position: absolute;
-  
-  top: 50%;
-  left: 0.7em;                        
-  transform: translateY(-50%);
-
-  width: 2.4em;
-  height: 1.2em;
-  border-radius: 0.15em;
-
-  
-  background-color: rgb(255, 0, 0);    
-
+#back-button-body{
+    height: .7em;
+    width: 1em;
+    background-color: rgb(114, 11, 224);
 }
-
