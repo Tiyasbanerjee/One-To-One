@@ -58,3 +58,64 @@ body {
     width: 1em;
     background-color: rgb(114, 11, 224);
 }
+
+#message-box{
+    height: 92%;
+    width: 100%;
+    background-color: bisque;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+}
+#type-message-box{
+    height: 10%;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: row;
+
+    background-color: blue;
+}
+
+#message{
+    height: 100%;
+    width: 85%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: bisque;
+}
+
+#send{
+    height: 100%;
+    width: 15%;
+    padding: 0.3em;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: bisque;
+}
+#send-button{
+    max-height: 100%;
+    width: 100%;
+    aspect-ratio: 1/1;
+    background-color: rgb(188, 147, 147);
+
+    border-radius: 35%;
+}
+#message-input{
+    height: 50%;
+    width: 95%;
+
+    border-radius: 1em;
+    background-color: #ffffff;
+}
