@@ -44,7 +44,13 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
+
+
 }
+#back-from-chat:hover{
+    transform: scale(1.1);
+}
+
 #arrow-of-back-button{
     height: 0;
     width: 0;
@@ -68,6 +74,8 @@ body {
     justify-content: center;
     align-items: flex-end;
 
+    flex-direction: column;
+
 }
 #type-message-box{
     height: 10%;
@@ -79,7 +87,6 @@ body {
 
     flex-direction: row;
 
-    background-color: blue;
 }
 
 #message{
@@ -106,6 +113,7 @@ body {
 }
 #send-button{
     max-height: 100%;
+    max-width: 100px;
     width: 100%;
     aspect-ratio: 1/1;
     background-color: rgb(188, 147, 147);
@@ -113,9 +121,26 @@ body {
     border-radius: 35%;
 }
 #message-input{
-    height: 50%;
+    height: 80%;
     width: 95%;
 
     border-radius: 1em;
-    background-color: #ffffff;
+    padding: .9em;
+    font-weight: bold;
+    background-color: #fff3d4;
+    border: 1px solid rgb(249, 223, 175);
+    box-shadow: 1px 0 2px black;
+    
+}
+
+#message-input::-webkit-scrollbar{
+    display: none;
+}
+
+
+#show_message{
+    height: 90%;
+    width: 100%;
+
+    background-color: transparent;
 }
