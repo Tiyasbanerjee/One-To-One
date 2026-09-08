@@ -19,4 +19,63 @@
   width: 80%;
   border-radius: 1em;
   background-color: beige;
+
+  display: flex;
+  flex-direction: column;
+  
+  align-items: center;
+  justify-content: space-evenly;
+
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.notes{
+  height: 55%;
+  width: 90%;
+  text-align: center;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  font-family:'Times New Roman', Times, serif
+
+}
+.action_keys{
+  height: 35%;
+  width: 90%;
+  
+
+  border-radius: 1em;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+
+}
+
+.make_chat{
+  width: 100%;
+  height: 28%;
+
+  border: 1px solid rgb(0, 174, 255);
+
+  border-radius: 1em;
+
+  font-size: larger;
+  color:rgb(45, 0, 96);
+  font-family:'Times New Roman', Times, serif;
+  letter-spacing: 0.2em;
+
+  background-color: rgba(215, 244, 250, 0.736);
+}
+
+.make_chat:hover{
+  transform: scale(1.05);
+  background-color: rgb(215, 244, 250);
+}
+
+.make_chat:active {
+  transform: scale(.95);
+  
 }
