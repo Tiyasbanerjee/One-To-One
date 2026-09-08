@@ -1,0 +1,44 @@
+.header{
+    height: 7%;
+    width: 100%;
+    border-bottom: 2px solid palevioletred;
+    background-color: #927174;
+
+    display: flex;
+    align-items: center;
+
+}
+.back_holder {
+    height: 100%;
+
+
+    transition: height 0.3s ease; 
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back_btn{
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+
+    display: flex;
+    align-items: center;
+
+    border: none;
+}
+.back_btn:active{
+    transform: scale(.95);
+}
+
+.arrow {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  object-fit: contain;
+  pointer-events: none;
+
+  filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.512));
+}
