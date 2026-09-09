@@ -6,16 +6,16 @@ export default function WelcomeScreen({ connect, onReadDocs }){
       <div className={styles.options_holder}>
           <div className={styles.notes}>
             <h5 style={{color: '#478aff'}}>Meet your personal Waki-Talki</h5>
-            <h2 style={{color: '#7d63f3',marginBottom: '0.2em' }}><i><b>One-To-One</b></i></h2>
-            <h5 style={{letterSpacing: '0.01em',fontWeight: 400, color:'#334155'}}>
+            <h2 style={{color: '#7d63f3'}}><i><b>One-To-One</b></i></h2>
+            <h5 style={{color:'#415168'}}>
               This app provides you a medium to connect with your friends, or people you trust
               without relying on external servers.
               <br/>
               Means there is no probability that your data would be stored
               in some corner of the internet.
             </h5>
-            <h4 style={{color:'#155cc1',marginTop:'0.4em',marginBottom:'0.1em'}}>Usage Guide</h4>
-            <h5 style={{letterSpacing: '0.01em' , fontWeight: 400, color:'#080c11'}}>
+            <h4 style={{color:'#155cc1'}}>Usage Guide</h4>
+            <h5 style={{color:'#4b596a'}}>
               1. You can create a chat or join a chat
               <br/>
               2. you can see a text, copy and send this to 
