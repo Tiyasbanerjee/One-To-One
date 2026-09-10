@@ -5,8 +5,11 @@ export default function WelcomeScreen({ connect, onReadDocs }){
     <div className={styles.container}>
       <div className={styles.options_holder}>
           <div className={styles.notes}>
+
             <h5 style={{color: '#478aff'}}>Meet your personal Waki-Talki</h5>
-            <h2 style={{color: '#7d63f3'}}><i><b>One-To-One</b></i></h2>
+            
+            <h2 style={{color: '#7d63f3',marginBottom:'1cqh'}}><i><b>One-To-One</b></i></h2>
+            
             <h5 style={{color:'#415168'}}>
               This app provides you a medium to connect with your friends, or people you trust
               without relying on external servers.
@@ -14,7 +17,9 @@ export default function WelcomeScreen({ connect, onReadDocs }){
               Means there is no probability that your data would be stored
               in some corner of the internet.
             </h5>
-            <h4 style={{color:'#155cc1'}}>Usage Guide</h4>
+            
+            <h4 style={{color:'#155cc1',marginBottom:'1cqh',marginTop:'1cqh'}}>Usage Guide</h4>
+            
             <h5 style={{color:'#4b596a'}}>
               1. You can create a chat or join a chat
               <br/>
@@ -25,12 +30,17 @@ export default function WelcomeScreen({ connect, onReadDocs }){
               <br/>
               4. And they also have to do the same process , paste your handshake key.
             </h5>
+          
           </div>
+          
           <div className={styles.action_keys}>
+            
             <button className={styles.make_chat} onClick={connect}><b>-Create-</b></button>
             <button className={styles.make_chat} onClick={connect}><b>-Join-</b></button>
             <button className={styles.make_chat} onClick={onReadDocs}><b>..Read..Dcos..</b></button>
+          
           </div>
+          
       </div>
     </div>
   );

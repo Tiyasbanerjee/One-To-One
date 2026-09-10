@@ -1,7 +1,85 @@
 .box{
-    height: 50%;
+    height: 80%;
+    max-width: 89%;
+    aspect-ratio: 5/9;
+    border-radius: 1em;
+    box-shadow: 1px 1px 20px rgb(88, 86, 86), inset 0 0 100px rgba(255, 255, 255, 0.384);
+    border: 1px solid white;
+
+    background-image: linear-gradient(rgba(250, 213, 127, 0.509),rgba(79, 29, 21, 0.591),rgba(150, 139, 194, 0.768));
+    backdrop-filter: blur(30px);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.input_box{
+    height: 40%;
+    width: 95%;
+
+    border-radius: 1em;
+    
+    background-color: rgba(219, 238, 255, 0.233);
+
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: space-evenly;
+    
+
+    padding: 0.2em;
+    gap: 0.5em;
+
+    backdrop-filter: blur(10px);
+}
+
+.button_holder{
+    height: 10%;
+    width: 90%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.token_name{
+    background-color: rgba(66, 66, 66, 0.136);
+    box-shadow: inset 0 0 5px rgba(247, 244, 244, 0.492), 0 0 5px rgba(0, 0, 0, 0.177);
+    border-radius: 1em;
+    padding: 0.3em;
+}
+
+.show_token{
+    height: 60%;
+    width: 90%;
+    border-radius: 1em;
+}
+
+.button{
+    height: 100%;
     width: 80%;
     border-radius: 1em;
-    box-shadow: 1px 1px 10px white;
-    border: 1px solid white;
+
+    font-weight: bolder;
+    font-size: xx-large;
+
+
+    background-color: rgba(227, 242, 255, 0.25);
+    backdrop-filter: blur(20px);
+    box-shadow: inset 0 0 5px rgba(240, 234, 234, 0.509);
+
+    transition: transform 0.5s ease;
+}
+
+@media(hover: hover){
+.button:hover{
+    transform: translateY(-2px);
+}
+}
+
+.button:active{
+    transform: translateY(6px);
 }

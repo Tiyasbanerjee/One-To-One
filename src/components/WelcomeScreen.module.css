@@ -7,19 +7,18 @@
 
   height: 100%;
   width: 100%;
+
+  padding: 1em;
 }
 
 .options_holder{
-  max-height: 90%;
-  max-width: 90%;
+  height: 80%;
+  max-width: 100%;
 
-  min-height: 40%;
-  min-width: 40%;
-
-  aspect-ratio: 9/16;
+  aspect-ratio: 9/16; 
 
   border-radius: 1em;
-  background-color: beige;
+  background-color: beige; 
 
   display: flex;
   flex-direction: column;
@@ -39,8 +38,9 @@
   overflow-y: auto;
   overflow-x: hidden;
 
-  font-family:'Times New Roman', Times, serif;
-  font-size: 2.8cqh;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size:large;
+  font-weight: bolder;
 }
 .action_keys{
   height: 35%;
@@ -56,28 +56,64 @@
 
 }
 
-.make_chat{
-  width: 100%;
-  height: 28%;
-
-  border: 1px solid rgb(0, 174, 255);
-
-  border-radius: 1em;
-
-  font-size: larger;
-  color:rgb(45, 0, 96);
-  font-family:'Times New Roman', Times, serif;
-  letter-spacing: 0.2em;
-
-  background-color: rgba(215, 244, 250, 0.736);
+.notes::-webkit-scrollbar {
+  width: 5px;
+  background-color: azure;
 }
 
-.make_chat:hover{
-  transform: scale(1.05);
-  background-color: rgb(215, 244, 250);
+
+.notes::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.623);
+  border: 1px solid transparent;
+  background-clip: padding-box;
+  border-radius: 2px; 
+}
+
+
+.notes::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(44, 41, 41, 0.9);
+  border: 0px solid transparent;      
+}
+
+.make_chat{
+  width: 95%;
+  height: 28%;
+
+
+  border-radius: 1em;
+ 
+  color:rgb(0, 0, 0);
+  font-family:'Courier New', Courier, monospace;
+
+  container-type: inline-size;
+  font-size: clamp(0.9rem, 4cqw, 1.3rem);
+  letter-spacing: 0.5em;
+
+  background-color: rgb(245, 245, 245);
+  border: 1px solid rgb(180, 180, 180);
+
+  box-shadow: 
+    0 5px 0 rgb(170, 170, 170),
+    0 8px 10px rgba(0, 0, 0, 0.15);
+
+  cursor: pointer;
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
+}
+
+
+@media (hover: hover) {
+  .make_chat:hover {
+    background-color: rgb(255, 255, 255);
+    transform: translateY(-2px);
+    box-shadow: 
+      0 7px 0 rgb(170, 170, 170),
+      0 10px 14px rgba(0, 0, 0, 0.2);
+  }
 }
 
 .make_chat:active {
-  transform: scale(.95);
-  
+  transform: translateY(4px);
+  box-shadow: 
+    0 1px 0 rgb(170, 170, 170),
+    0 2px 4px rgba(0, 0, 0, 0.15);
 }
