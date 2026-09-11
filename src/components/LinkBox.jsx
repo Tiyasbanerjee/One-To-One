@@ -1,6 +1,6 @@
 import styles from './LinkBox.module.css'
 
-export default function LinkBox(){
+export default function LinkBox({onStartChat}){
     return(
         <div className={styles.box}>
             <div className={styles.input_box}>
@@ -20,7 +20,7 @@ export default function LinkBox(){
                 </textarea>
             </div>
             <div className={styles.button_holder}>
-                <button className={styles.button}>Confirm</button>
+                <button className={styles.button} onClick={onStartChat}>Confirm</button>
             </div>
         </div>
     );

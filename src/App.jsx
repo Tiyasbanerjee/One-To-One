@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import Welcome_screen from './components/WelcomeScreen';
 import ConnectPage from './components/ConnectPage';
+import Chat from './components/ChatRoom'
+
 import './App.css'
 
 export default function App() {
@@ -20,7 +22,11 @@ export default function App() {
       )}
 
       {currentPage === 'connect' && (
-        <ConnectPage onBack={() => setCurrentPage('welcome')} />
+        <ConnectPage onBack={() => setCurrentPage('welcome')} onStartChat={()=>setCurrentPage('Chat')}/>
+      )}
+
+      {currentPage ==='Chat' && (
+        <Chat/>
       )}
       
     </div>
