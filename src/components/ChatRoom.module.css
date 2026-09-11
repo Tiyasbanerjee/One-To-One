@@ -1,0 +1,65 @@
+.contener{
+    height: 100%;
+    width: 100%;
+}
+.chatBox{
+    height:93%;
+    width: 100%;
+    background-color: rgba(255, 247, 98, 0.111);
+    backdrop-filter: blur(10px);
+
+    display: flex;
+    flex-direction: column;
+}
+.chatInput{
+    height: 15%;
+
+    gap: 0.1em;
+
+    display: flex;
+    align-items: end;
+    justify-content: center;
+
+    padding-bottom: 1em;
+    padding-left: 1em;
+}
+.inputFild{
+    width: 80%;
+    min-height: 38px;
+    max-height: 100%;
+
+    field-sizing: content; 
+    resize: none;         
+    overflow-y: auto;
+
+    font-size: larger;
+
+    border-radius: 1em;
+    
+    text-align: left;
+
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+
+    border: 1px solid black;
+}
+
+
+.send_btn {
+  height: 38px;
+  padding: 0 1.2rem;
+  border-radius: 1em;
+  border: 2px solid salmon;
+  background-color: rgba(255, 140, 0, 0.455);
+
+  cursor: pointer;
+  font-weight: bold;
+  white-space: nowrap; 
+
+  transition: transform 0.1s ease;
+  box-shadow: 1px 5px 5px black;
+}
+.send_btn:active{
+    transform: translateY(10px);
+    box-shadow: 1px 5px 1px rgba(0, 0, 0, 0.179);
+}

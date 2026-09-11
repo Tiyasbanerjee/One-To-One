@@ -79,6 +79,10 @@
   width: 95%;
   height: 28%;
 
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+
 
   border-radius: 1em;
  
@@ -100,6 +104,9 @@
   transition: transform 0.08s ease, box-shadow 0.08s ease;
 }
 
+.make_chat::-webkit-scrollbar{
+  display: none;
+}
 
 @media (hover: hover) {
   .make_chat:hover {

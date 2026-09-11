@@ -26,7 +26,7 @@ export default function App() {
       )}
 
       {currentPage ==='Chat' && (
-        <Chat/>
+        <Chat onBack={()=>setCurrentPage('connect')}/>
       )}
       
     </div>
