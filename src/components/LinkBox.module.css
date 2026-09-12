@@ -51,11 +51,30 @@
     border-radius: 1em;
     padding: 0.3em;
 }
+.token_name_text{
+    color: rgb(15, 4, 1);
+    font-family: 'Times New Roman', Times, serif;
+    filter: drop-shadow(1px 1px 5px rgba(236, 236, 236, 0.491));
+}
 
 .show_token{
     height: 60%;
     width: 90%;
+
+    padding: 0.3em;
     border-radius: 1em;
+
+    text-align: center;
+    cursor: pointer;
+
+    background-color: transparent;
+    border: 1px solid white;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 5px rgb(31, 23, 23) , inset 0 0 5px rgb(242, 234, 234);
+}
+
+.show_token::-webkit-scrollbar{
+    display: none;
 }
 
 .button{
@@ -63,9 +82,9 @@
     width: 80%;
     border-radius: 1em;
 
-    font-weight: bolder;
-    font-size: xx-large;
-
+    font-weight: bold;
+    font-size: x-large;
+    font-family:'Times New Roman', Times, serif;
 
     background-color: rgba(227, 242, 255, 0.25);
     backdrop-filter: blur(20px);
