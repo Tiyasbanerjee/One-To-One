@@ -27,7 +27,8 @@
   justify-content: space-evenly;
 
 
-  border: 1px solid rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.792);
 }
 
 .notes{
@@ -123,4 +124,8 @@
   box-shadow: 
     0 1px 0 rgb(170, 170, 170),
     0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.icon{
+  height: 30%;
 }

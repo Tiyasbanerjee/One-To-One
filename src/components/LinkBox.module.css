@@ -3,11 +3,11 @@
     max-width: 89%;
     aspect-ratio: 5/9;
     border-radius: 1em;
-    box-shadow: 1px 1px 20px rgb(88, 86, 86), inset 0 0 100px rgba(255, 255, 255, 0.384);
-    border: 1px solid white;
-
-    background-image: linear-gradient(rgba(250, 213, 127, 0.509),rgba(79, 29, 21, 0.591),rgba(150, 139, 194, 0.768));
-    backdrop-filter: blur(30px);
+   
+    background: rgba(255, 255, 255, 0.183);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.792);
 
     display: flex;
     flex-direction: column;
@@ -21,7 +21,6 @@
 
     border-radius: 1em;
     
-    background-color: rgba(219, 238, 255, 0.233);
 
     display: flex;
     flex-direction: column;
@@ -32,7 +31,6 @@
     padding: 0.2em;
     gap: 0.5em;
 
-    backdrop-filter: blur(10px);
 }
 
 .button_holder{
@@ -46,18 +44,18 @@
 
 
 .token_name{
-    background-color: rgba(66, 66, 66, 0.136);
-    box-shadow: inset 0 0 5px rgba(247, 244, 244, 0.492), 0 0 5px rgba(0, 0, 0, 0.177);
+    width: 100%;
+    text-align: left;
     border-radius: 1em;
     padding: 0.3em;
 }
 .token_name_text{
     color: rgb(15, 4, 1);
-    font-family: 'Times New Roman', Times, serif;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     filter: drop-shadow(1px 1px 5px rgba(236, 236, 236, 0.491));
 }
 
-.show_token{
+.show_my_token , .take_token{
     height: 60%;
     width: 90%;
 
@@ -67,10 +65,22 @@
     text-align: center;
     cursor: pointer;
 
-    background-color: transparent;
-    border: 1px solid white;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 0 5px rgb(31, 23, 23) , inset 0 0 5px rgb(242, 234, 234);
+    
+    box-shadow: none;
+    font-family: monospace;
+    font-size: 0.85rem;
+
+    resize: none;
+}
+.show_my_token{
+    background-color: rgba(0, 255, 255, 0.3);
+    border: 1px solid rgba(0, 255, 255, 0.4);    
+    box-shadow: 0 5px 12px rgba(0, 100, 100, 0.6);
+}
+.take_token{
+    background-color: rgba(165, 42, 42, 0.3);
+    border: 1px solid rgba(165, 42, 42, 0.4);
+    box-shadow: 0 5px 12px rgba(84, 0, 0, 0.6);
 }
 
 .show_token::-webkit-scrollbar{
@@ -81,14 +91,17 @@
     height: 100%;
     width: 80%;
     border-radius: 1em;
+    border: 1px solid black;
+
+    background: #0901abaa;
+    color: white;
 
     font-weight: bold;
     font-size: x-large;
     font-family:'Times New Roman', Times, serif;
 
-    background-color: rgba(227, 242, 255, 0.25);
-    backdrop-filter: blur(20px);
-    box-shadow: inset 0 0 5px rgba(240, 234, 234, 0.509);
+   
+    box-shadow: 0 4px 12px rgba(11, 9, 50, 0.521);
 
     transition: transform 0.5s ease;
 }
