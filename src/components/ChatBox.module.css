@@ -1,4 +1,56 @@
 .chatbox{
     height: 85%;
-   border: 1px solid black;
+
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 0.3em 0;
+
+    overflow-y: auto;
+}
+
+
+
+
+.messages_in,.messages_out{
+    min-height: fit-content;
+    width: 100%;
+
+    padding: 0 1em;
+    font-size: large;
+    font-weight: bold;
+
+    display: flex;
+}
+.messages_in{
+    justify-content: left;
+}
+.messages_out{
+    justify-content: right;
+}
+
+
+
+
+.incomeing , .outgoing{
+    text-align: left;
+    width: fit-content; 
+    max-width: 50%;
+    overflow-wrap: break-word;    
+    white-space: pre-wrap;
+
+    backdrop-filter: blur(10px);
+}
+
+
+.incomeing{
+    background-color: rgba(101, 252, 252, 0.5);
+    padding: 0.4em;
+    border-radius: 0.6em;
+}
+
+.outgoing{
+    background-color: rgba(255, 144, 71, 0.5);
+    padding: 0.4em;
+    border-radius: 0.6em;
 }
