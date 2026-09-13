@@ -1,49 +1,73 @@
-const nodeDataChanel = require('node-datachannel'); // main lib
+const nodeDataChannel = require('node-datachannel');
+const fs = require('fs');
+const readline = require('readline');
 
-const readline = require('readline');  //needed for terminal testing
-
-// readline interface for terminal input/output
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
 
-
-// stun servers.
-const pc = new nodeDataChanel.PeerConnection('Peer_B', {
-  iceServers: [
-    'stun:stun.l.google.com:19302',
-    'stun:stun1.l.google.com:19302'
-  ]
+const pc = new nodeDataChannel.PeerConnection('peerB', {
+  iceServers: ['stun:stun.l.google.com:19302']
 });
 
-// event listener
-let dc;
-pc.onDataChannel((channel) => {
-  dc = channel;
+let localSdp = '';
+let localType = '';
+const candidates = [];
+
+pc.onLocalDescription((sdp, type) => {
+  localSdp = sdp;
+  localType = type;
+});
+
+pc.onLocalCandidate((candidate, mid) => {
+  candidates.push({ candidate, mid });
+});
+
+pc.onGatheringStateChange((state) => {
+  if (state === 'complete') {
+    const token = {
+      sdp: localSdp,
+      type: localType,
+      ice: candidates
+    };
+
+    fs.writeFileSync('./tokenB.txt', JSON.stringify(token));
+   
+  }
+});
+
+pc.onDataChannel((dc) => {
 
   dc.onOpen(() => {
+    console.log('<---Ready--->');
+    
+    rl.on('line', (msg) => {
 
-    rl.on('line', (line) => {
-      dc.sendMessage(line);
+      dc.sendMessage(msg);
+    
     });
-
   });
 
   dc.onMessage((msg) => {
-    console.log(`Peer A: ${msg}`);
+  
+    console.log('peerA:', msg);
+
   });
 
 });
 
 
-// handshake
-pc.onLocalDescription((sdp, type) => {
-  console.log(JSON.stringify({ sdp, type }));
-});
-
-rl.question('peer A offer:\n', (offerStr) => {
-  const offer = JSON.parse(offerStr);
+rl.question('If tokenA.txt ready', () => {
+  
+  const raw = fs.readFileSync('./tokenA.txt', 'utf-8');
+  
+  fs.unlinkSync('./tokenA.txt');
+  const offer = JSON.parse(raw);
 
   pc.setRemoteDescription(offer.sdp, offer.type);
+  for (const { candidate, mid } of offer.ice) {
+    pc.addRemoteCandidate(candidate, mid);
+  }
+
 });

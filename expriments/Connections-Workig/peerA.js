@@ -1,4 +1,5 @@
-const nodeDataChanel = require('node-datachannel');
+const nodeDataChannel = require('node-datachannel');
+const fs = require('fs');
 const readline = require('readline');
 
 const rl = readline.createInterface({
@@ -6,47 +7,45 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
-const pc = new nodeDataChanel.PeerConnection('Peer_A', {
-  iceServers: [
-    'stun:stun.l.google.com:19302',
-    'stun:stun1.l.google.com:19302'
-  ]
+const pc = new nodeDataChannel.PeerConnection('peerA', {
+  iceServers: ['stun:stun.l.google.com:19302']
 });
 
-let offerSdp = '';
-let offerType = '';
+let localSdp = '';
+let localType = '';
 const candidates = [];
 
 pc.onLocalDescription((sdp, type) => {
-  offerSdp = sdp;
-  offerType = type;
+  localSdp = sdp;
+  localType = type;
 });
 
-// Collect candidates as they arrive from STUN/host interfaces
-pc.onLocalCandidate((candidate) => {
-  candidates.push(candidate);
+pc.onLocalCandidate((candidate, mid) => {
+  candidates.push({ candidate, mid });
 });
 
 pc.onGatheringStateChange((state) => {
   if (state === 'complete') {
-    // Append all gathered candidates directly into the SDP
-    const candidateLines = candidates.map(c => `a=${c}\r\n`).join('');
-    const fullSdp = offerSdp + candidateLines;
-
     const token = {
-      sdp: fullSdp,
-      type: offerType
+      sdp: localSdp,
+      type: localType,
+      ice: candidates
     };
 
-    console.log('\nMy token:---');
-    console.log(token);
-    console.log('<-------->');
+    fs.writeFileSync('./tokenA.txt', JSON.stringify(token));
 
-    rl.question('\nPeer B token input field--->:\n', (answerStr) => {
-      const answer = JSON.parse(answerStr);
+    rl.question('If tokenB.txt ready-->', () => {
+
+      const raw = fs.readFileSync('./tokenB.txt', 'utf-8');
+      fs.unlinkSync('./tokenB.txt');
+
+      const answer = JSON.parse(raw);
+
       pc.setRemoteDescription(answer.sdp, answer.type);
-      console.log('<----->');
-      rl.close();
+      
+      for (const { candidate, mid } of answer.ice) {
+        pc.addRemoteCandidate(candidate, mid);
+      }
     });
   }
 });
@@ -54,10 +53,16 @@ pc.onGatheringStateChange((state) => {
 const dc = pc.createDataChannel('chat');
 
 dc.onOpen(() => {
-  console.log('ready...');
-  dc.sendMessage('Hello-imA!');
+  console.log('<---Ready--->');
+
+  rl.on('line', (msg) => {
+    dc.sendMessage(msg);
+  });
+
 });
 
 dc.onMessage((msg) => {
-  console.log(`Peer B: ${msg}`);
+
+  console.log('peerB:', msg);
+
 });
