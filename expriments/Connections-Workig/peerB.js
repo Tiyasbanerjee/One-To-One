@@ -37,6 +37,23 @@ pc.onGatheringStateChange((state) => {
   }
 });
 
+
+
+rl.question('If tokenA.txt ready', () => {
+  
+  const raw = fs.readFileSync('./tokenA.txt', 'utf-8');
+  
+  fs.unlinkSync('./tokenA.txt');
+  const offer = JSON.parse(raw);
+
+  pc.setRemoteDescription(offer.sdp, offer.type);
+  for (const { candidate, mid } of offer.ice) {
+    pc.addRemoteCandidate(candidate, mid);
+  }
+
+});
+
+
 pc.onDataChannel((dc) => {
 
   dc.onOpen(() => {
@@ -54,20 +71,5 @@ pc.onDataChannel((dc) => {
     console.log('peerA:', msg);
 
   });
-
-});
-
-
-rl.question('If tokenA.txt ready', () => {
-  
-  const raw = fs.readFileSync('./tokenA.txt', 'utf-8');
-  
-  fs.unlinkSync('./tokenA.txt');
-  const offer = JSON.parse(raw);
-
-  pc.setRemoteDescription(offer.sdp, offer.type);
-  for (const { candidate, mid } of offer.ice) {
-    pc.addRemoteCandidate(candidate, mid);
-  }
 
 });

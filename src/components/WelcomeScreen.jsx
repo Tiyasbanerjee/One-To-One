@@ -1,6 +1,6 @@
 import styles from './WelcomeScreen.module.css';
 
-export default function WelcomeScreen({ connect, onReadDocs }){
+export default function WelcomeScreen({ connect, onReadDocs, create, join }){
   return (
     <div className={styles.container}>
       <div className={styles.options_holder}>
@@ -37,8 +37,8 @@ export default function WelcomeScreen({ connect, onReadDocs }){
           
           <div className={styles.action_keys}>
             
-            <button className={styles.make_chat} onClick={connect}><b>-Create-</b></button>
-            <button className={styles.make_chat} onClick={connect}><b>-Join-</b></button>
+            <button className={styles.make_chat} onClick={()=>{ connect(); create(); }}><b>-Create-</b></button>
+            <button className={styles.make_chat} onClick={()=>{ connect(); join(); }}><b>-Join-</b></button>
             <button className={styles.make_chat} onClick={onReadDocs}><b>..Read..Dcos..</b></button>
           
           </div>

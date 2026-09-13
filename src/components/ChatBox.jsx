@@ -1,6 +1,7 @@
 import styles from './ChatBox.module.css'
 
-export default function ChatBox(){
+export default function ChatBox({message}){
+
     return(
         <div className={styles.chatbox}>
             
@@ -15,6 +16,20 @@ export default function ChatBox(){
             <div className={styles.messages_out}>
                 <div className={styles.outgoing}>Hiiii There</div>
             </div>
+
+            // real messages starts from here
+
+            {
+                message.map((msg)=>(
+                    <div className={msg.type ==="outgoing" ? styles.messages_out : styles.messages_in}>
+                        <div className={msg.type === "outgoing" ? styles.outgoing : styles.incomeing}>
+                            {msg.txt}
+                        </div>
+                    </div>
+                ))
+            }
+
+
         </div>
     )
 }

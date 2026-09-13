@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Welcome_screen from './components/WelcomeScreen';
 import ConnectPage from './components/ConnectPage';
 import Chat from './components/ChatRoom'
-
+import { handleCreate, hendelConnection } from './components/hooks/main';
 import './App.css'
 
 export default function App() {
@@ -13,6 +13,8 @@ export default function App() {
 
       {currentPage === 'welcome' && (
         <Welcome_screen
+          create={handleCreate}
+          join={hendelConnection}
           connect={() => setCurrentPage('connect')}
           onReadDocs={() => {
             console.log("click")
