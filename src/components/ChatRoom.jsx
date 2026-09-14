@@ -2,13 +2,13 @@ import styles from './ChatRoom.module.css'
 import Header from './Header.jsx';
 import ChatBox from './ChatBox.jsx'
 
-export default function ChatRoom({onBack}) {
+export default function ChatRoom({onBack, message}) {
   return (
     <div className={styles.contener}>
       <Header onBack={onBack}/>
       <div className={styles.chatBox}>
         
-        <ChatBox/>
+        <ChatBox message={message}/>
 
         <div className={styles.chatInput}>
 

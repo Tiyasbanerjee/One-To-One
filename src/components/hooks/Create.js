@@ -1,12 +1,16 @@
-import { PeerConnection } from "node-datachannel";
 
 let peerConnection;
-export async function createConnection() {
+let notifyMessage;
+
+export async function createConnection(onmessage) {
     peerConnection = new RTCPeerConnection();
     const datachannel = peerConnection.createDataChannel('chat');
     
+    notifyMessage = onmessage
     datachannel.onmessage = (event) => {
-        console.log('Message received:', event.data);    
+        const msg = JSON.parse(event.data)
+        const organized_msg = {type:"incomeing",text:msg}
+        notifyMessage(organized_msg)    
     };
 
     const offer = await peerConnection.createOffer();
@@ -18,7 +22,7 @@ export async function createConnection() {
 }
 
 function iceGather(pc){
-    return new Promise(()=>{
+    return new Promise((resolve)=>{
         if(pc.iceGatheringState === 'complete'){
             resolve();
         }else{

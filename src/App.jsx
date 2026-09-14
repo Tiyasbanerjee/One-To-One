@@ -1,12 +1,17 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Welcome_screen from './components/WelcomeScreen';
 import ConnectPage from './components/ConnectPage';
 import Chat from './components/ChatRoom'
-import { handleCreate, hendelConnection } from './components/hooks/main';
+import { handleCreate, hendelConnection, registerMessage } from './components/hooks/main';
 import './App.css'
 
 export default function App() {
+  const [messages, setMessages] = useState([]);
   const [currentPage, setCurrentPage] = useState('welcome');
+  
+  useEffect(()=>{
+    registerMessage(setMessages);
+  },[])
 
   return (
     <div className='app'>
@@ -28,7 +33,10 @@ export default function App() {
       )}
 
       {currentPage ==='Chat' && (
-        <Chat onBack={()=>setCurrentPage('connect')}/>
+        <Chat 
+        onBack={()=>setCurrentPage('connect')}
+        message={messages}
+        />
       )}
       
     </div>
