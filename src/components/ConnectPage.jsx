@@ -2,12 +2,12 @@ import styles from './ConnectPage.module.css';
 import Header from './Header.jsx';
 import LinkBox from './LinkBox.jsx'
 
-export default function ConnectPage({onBack,onStartChat}){
+export default function ConnectPage({onBack,onStartChat,mytoken}){
   return (
     <div className={styles.container}>
       <Header onBack={onBack}/>
       <div className={styles.LinkBox_holder}>
-        <LinkBox onStartChat={onStartChat}/>
+        <LinkBox onStartChat={onStartChat} mytoken={mytoken}/>
       </div>
     </div>
   );

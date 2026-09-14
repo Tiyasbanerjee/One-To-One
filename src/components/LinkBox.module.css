@@ -83,7 +83,10 @@
     box-shadow: 0 5px 12px rgba(84, 0, 0, 0.6);
 }
 
-.show_token::-webkit-scrollbar{
+.show_my_token::-webkit-scrollbar{
+    display: none;
+}
+.take_token::-webkit-scrollbar{
     display: none;
 }
 

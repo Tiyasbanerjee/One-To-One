@@ -17,7 +17,6 @@ export default function ChatBox({message}){
                 <div className={styles.outgoing}>Hiiii There</div>
             </div>
 
-            // real messages starts from here
 
             {
                 message.map((msg)=>(

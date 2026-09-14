@@ -19,6 +19,7 @@ export async function createConnection(onmessage) {
     await iceGather(peerConnection);
 
     return JSON.stringify(peerConnection.localDescription)
+    
 }
 
 function iceGather(pc){
