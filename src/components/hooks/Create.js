@@ -34,3 +34,7 @@ function iceGather(pc){
         }
     });
 }
+
+export async function acceptAnswer(answer){
+    await peerConnection.setRemoteDescription(answer)
+} 

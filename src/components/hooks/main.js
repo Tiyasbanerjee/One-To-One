@@ -1,16 +1,19 @@
-import { createConnection } from './Create.js';
+import { createConnection, acceptAnswer } from './Create.js';
 import { connectConnection } from './Connect.js'
 
 import LZString from 'lz-string';
 
+let mode = null
+
 export const handleCreate = async () => {
+    mode = "create"
     const token = await createConnection( message_update );
     const compressed = LZString.compressToBase64(token);
     return `|${compressed}|`
 };
 
 export const hendelConnection = () => {
-     
+    mode = "connect"
     return connectConnection(message_update);
     
 }
@@ -24,9 +27,12 @@ export const message_update = (data) => {
     messages((pre) => [...pre, data]); 
 };
 
-export const setPeerToken = (token) => {
+export const setPeerToken = async (token) => {
     const compressed = token.slice(1,-1)
     const un_compressed = LZString.decompressFromBase64(compressed)
     const answer = JSON.parse(un_compressed)
-    return 0
+    
+    if(mode==='create'){
+        await acceptAnswer(answer)
+    }
 }
