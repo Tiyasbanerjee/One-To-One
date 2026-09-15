@@ -6,7 +6,7 @@ import LZString from 'lz-string';
 export const handleCreate = async () => {
     const token = await createConnection( message_update );
     const compressed = LZString.compressToBase64(token);
-    return `|+${compressed}+|`
+    return `|${compressed}|`
 };
 
 export const hendelConnection = () => {
@@ -25,5 +25,8 @@ export const message_update = (data) => {
 };
 
 export const setPeerToken = (token) => {
+    const compressed = token.slice(1,-1)
+    const un_compressed = LZString.decompressFromBase64(compressed)
+    const answer = JSON.parse(un_compressed)
     return 0
 }
