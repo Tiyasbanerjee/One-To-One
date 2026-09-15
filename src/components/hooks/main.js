@@ -1,9 +1,12 @@
 import { createConnection } from './Create.js';
 import { connectConnection } from './Connect.js'
 
-export const handleCreate = () => {
-    return createConnection( message_update );
-    
+import LZString from 'lz-string';
+
+export const handleCreate = async () => {
+    const token = await createConnection( message_update );
+    const compressed = LZString.compressToBase64(token);
+    return `|+${compressed}+|`
 };
 
 export const hendelConnection = () => {
