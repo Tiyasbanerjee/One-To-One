@@ -1,0 +1,52 @@
+.header{
+    height: 7%;
+    width: 100%;
+    border-bottom: 1px solid rgba(8, 8, 8, 0.43);
+    background-image: linear-gradient(rgba(234, 255, 255, 0.5),rgba(158, 175, 178, 0.5));
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+
+}
+.back_holder {
+    height: 100%;
+
+
+    transition: height 0.3s ease; 
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back_btn{
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+
+    display: flex;
+    align-items: center;
+
+    border: none;
+
+    transition: transform 0.2s ease-in-out;
+}
+
+.back_btn:active {
+  transform: scale(0.92);
+}
+@media (hover: hover) {
+  .back_btn:hover {
+    transform: scale(1.05) translateX(15px);
+  }
+}
+
+.arrow {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  object-fit: contain;
+  pointer-events: none;
+
+  filter: drop-shadow(0px 2px 4px rgb(253, 255, 255));
+}

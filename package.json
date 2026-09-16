@@ -1,0 +1,32 @@
+{
+  "name": "one-to-one",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tiyasbanerjee/One-To-One.git"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Tiyasbanerjee/One-To-One/issues"
+  },
+  "homepage": "https://github.com/Tiyasbanerjee/One-To-One#readme",
+  "dependencies": {
+    "lz-string": "^1.5.0",
+    "node-datachannel": "^0.33.2",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-router-dom": "^7.18.3"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.1.1",
+    "vite": "^8.2.2"
+  }
+}
