@@ -5,7 +5,7 @@ let notifyMessage;
 let datachannel;
 
 export async function createConnection(onmessage) {
-    peerConnection = new RTCPeerConnection();
+    peerConnection = new RTCPeerConnection({ iceServers: [{ urls: 'stun:stun.l.google.com:19302' }]});
     datachannel = peerConnection.createDataChannel('chat');
     
     notifyMessage = onmessage

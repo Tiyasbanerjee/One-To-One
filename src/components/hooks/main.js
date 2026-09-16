@@ -34,6 +34,8 @@ export const setPeerToken = async (token) => {
     const compressed = token.slice(1,-1)
     const un_compressed = LZString.decompressFromBase64(compressed)
     const answer = JSON.parse(un_compressed)
+
+    console.log(answer)
     
     if(mode==='create'){
         await acceptAnswer(answer)
