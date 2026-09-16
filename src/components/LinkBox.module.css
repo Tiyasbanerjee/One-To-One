@@ -154,3 +154,51 @@
     filter: blur(1px);
     border: 1px solid rgba(0, 0, 0, 0.446);
 }
+
+.connection_token_hider{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 1em;
+    padding: 0.3em;
+    color: aliceblue;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.button_load{
+    height: 100%;
+    width: 80%;
+    border-radius: 1em;
+    border: 1px solid black;
+
+    background: #01ab89aa;
+    color: white;
+
+    font-weight: bold;
+    font-size: x-large;
+    font-family:'Times New Roman', Times, serif;
+
+   
+    box-shadow: 0 4px 12px rgba(11, 9, 50, 0.521);
+
+    transition: transform 0.5s ease;
+}
+
+@media(hover: hover){
+.button_load:hover{
+    transform: translateY(-2px);
+}
+}
+
+.button_load:active{
+    transform: translateY(6px);
+}

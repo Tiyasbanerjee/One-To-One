@@ -2,18 +2,24 @@
 
 let peerConnection;
 let notifyMessage;
+let datachannel;
 
 export async function connectConnection(onmessage) {
     peerConnection = new RTCPeerConnection();
     notifyMessage = onmessage
 
     peerConnection.ondatachannel = (event) => {
-        const datachannel = event.channel;
+        datachannel = event.channel;
 
         datachannel.onmessage = (e) => {
             const msg = JSON.parse(e.data);
             const organized_msg = { type:"incomeing" , text:msg}
             notifyMessage(organized_msg)
+        }
+
+        datachannel.onopen = () => {
+        connect_side_sendMessage("ready")
+        console.log('ready')
         }
     }
 }
@@ -39,4 +45,8 @@ function iceGather(pc){
             };
         }
     });
+}
+
+export function connect_side_sendMessage(text) {
+    datachannel.send(JSON.stringify(text));
 }

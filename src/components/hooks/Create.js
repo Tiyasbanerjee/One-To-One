@@ -2,10 +2,11 @@
 
 let peerConnection;
 let notifyMessage;
+let datachannel;
 
 export async function createConnection(onmessage) {
     peerConnection = new RTCPeerConnection();
-    const datachannel = peerConnection.createDataChannel('chat');
+    datachannel = peerConnection.createDataChannel('chat');
     
     notifyMessage = onmessage
     datachannel.onmessage = (event) => {
@@ -13,6 +14,10 @@ export async function createConnection(onmessage) {
         const organized_msg = {type:"incomeing",text:msg}
         notifyMessage(organized_msg)    
     };
+    datachannel.onopen = () => {
+        create_side_sendMessage("ready")
+        console.log('ready')
+    }
 
     const offer = await peerConnection.createOffer();
     await peerConnection.setLocalDescription(offer)
@@ -38,3 +43,8 @@ function iceGather(pc){
 export async function acceptAnswer(answer){
     await peerConnection.setRemoteDescription(answer)
 } 
+
+
+export function create_side_sendMessage(text) {
+    datachannel.send(JSON.stringify(text));
+}

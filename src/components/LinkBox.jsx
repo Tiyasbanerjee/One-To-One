@@ -1,21 +1,24 @@
 import styles from './LinkBox.module.css'
 import { useState } from 'react';
 
-export default function LinkBox({onStartChat, mytoken}){
+export default function LinkBox({onStartChat, mytoken, mode,load}){
 
-    const [token,updateToken] = useState('')
+    const [token,updateToken] = useState('');
     const [revealed, setRevealed] = useState(false);
 
     const handCopy = () => {
         navigator.clipboard.writeText(mytoken)
         setRevealed(true);
-    }
+    };
 
 
     const buttonHandler = () => {
         onStartChat(token); 
     };
 
+    const loadBtn = () => {
+        load(token)
+    };
     
     return(
         <div className={styles.box}>
@@ -25,22 +28,44 @@ export default function LinkBox({onStartChat, mytoken}){
                 </div>
                 <div className={styles.blur_helper}>
                     
-               <textarea 
-               readOnly 
-               value={mytoken || ".....waiting....."} 
-               onClick={handCopy} 
-               className={`${styles.show_my_token} ${!revealed ? styles.blured : ''}`}>
-               </textarea>
+               
 
-               {!revealed && 
-               ( 
-               <div 
-               className={styles.my_token_wraper} 
-               onClick={handCopy}> 
-               <h3>Click to copy token</h3>
-               <p>Note: token should start and end with '|' </p>
-               </div> 
-                )}
+                {
+                    mode==="connect" && (
+                        <div
+                        className={styles.connection_token_hider} 
+                        > 
+                        
+                        <h3>You are joining a Chat</h3>
+                        <h5>paste your peer token and click load to get your token</h5>
+                        <h6>Note that: token should start and end with '|'</h6>
+                        
+                        </div> 
+                    )
+                }
+
+                {
+                    mode==="create" && (
+                <>
+                    <textarea 
+                    readOnly 
+                    value={mytoken || ".....waiting....."} 
+                    onClick={handCopy} 
+                    className={`${styles.show_my_token} ${!revealed ? styles.blured : ''}`}>
+                    </textarea>
+                    
+                    {!revealed && ( 
+                    <div 
+                    className={styles.my_token_wraper} 
+                    onClick={handCopy}> 
+                    <h3>Click to copy token</h3>
+                    <p>Note: token should start and end with '|' </p>
+                    </div> 
+                    )}
+                    
+                </>
+            )     
+                }
 
                 </div>
             </div>
@@ -55,7 +80,16 @@ export default function LinkBox({onStartChat, mytoken}){
                 </textarea>
             </div>
             <div className={styles.button_holder}>
-                <button className={styles.button} onClick={buttonHandler}>Confirm</button>
+                {
+                    mode==="create" && (
+                        <button className={styles.button} onClick={buttonHandler}>Confirm</button>
+                    )
+                }
+                {
+                    mode==="connect" && (
+                        <button className={styles.button_load} onClick={loadBtn}>load</button>
+                    )
+                }
             </div>
         </div>
     );
