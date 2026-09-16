@@ -45,7 +45,7 @@ export default function LinkBox({onStartChat, mytoken, mode,load}){
                 }
 
                 {
-                    mode==="create" && (
+                    (mode==="create" || mode==="connect_2")  && (
                 <>
                     <textarea 
                     readOnly 
@@ -81,7 +81,7 @@ export default function LinkBox({onStartChat, mytoken, mode,load}){
             </div>
             <div className={styles.button_holder}>
                 {
-                    mode==="create" && (
+                    (mode==="create" || mode==="connect_2") && (
                         <button className={styles.button} onClick={buttonHandler}>Confirm</button>
                     )
                 }

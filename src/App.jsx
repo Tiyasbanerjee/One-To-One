@@ -27,7 +27,7 @@ export default function App() {
   }
 
   const load = async (peerToken) => {
-    updateMode("create")
+    updateMode("connect_2")
     const a = await setPeerToken(peerToken)
     setMyToken(a)
   }
