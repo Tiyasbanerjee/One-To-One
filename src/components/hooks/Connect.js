@@ -22,12 +22,15 @@ export async function connectConnection(onmessage) {
         datachannel.onopen = () => {
         
             setTimeout(() => {
+                
                 connect_side_sendMessage("peer joined sucessfuly:")
+                
+                setTimeout(()=>{
+                    update_state(true)
+                },1000)
+            
             }, 1000);
             
-            setTimeout(()=>{
-                update_state(true)
-            },1000)
     }
     }
 }

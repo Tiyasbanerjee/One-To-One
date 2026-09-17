@@ -16,12 +16,15 @@ export async function createConnection(onmessage) {
     };
     datachannel.onopen = () => {
         setTimeout(() => {
+        
             create_side_sendMessage("Creater is ready to chat:")
+           
+            setTimeout(()=>{
+                update_state(true)
+            },1000)
+        
         }, 2000);
         
-        setTimeout(()=>{
-            update_state(true)
-        },1000)
     }
 
     const offer = await peerConnection.createOffer();
