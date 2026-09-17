@@ -1,6 +1,18 @@
 import styles from './ChatBox.module.css'
 
+import { useRef, useEffect } from 'react';
+
 export default function ChatBox({message}){
+
+    const messageEndRef = useRef(null);
+
+    useEffect(
+        ()=>{
+
+            messageEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+
+        },[message]
+    );
 
     return(
         <div className={styles.chatbox}>
@@ -14,7 +26,7 @@ export default function ChatBox({message}){
                 ))
             }
 
-
+            <div ref={messageEndRef} />
         </div>
     )
 }
