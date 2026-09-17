@@ -1,6 +1,6 @@
 # One-To-One
 
-<h1><a href="chat.tiyas.uk" target="_blank">A handy wakiTalki</a></h1>
+<h1><a href="https://chat.tiyas.uk" target="_blank">A handy wakiTalki</a></h1>
 
 <h1>How to use It?</h1>
 <h3>To use this you have to manually exchange the tokens first.</h3>
