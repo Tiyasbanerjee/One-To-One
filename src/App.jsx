@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import Welcome_screen from './components/WelcomeScreen';
 import ConnectPage from './components/ConnectPage';
 import Chat from './components/ChatRoom'
-import { handleCreate, registerMessage, setPeerToken, sendMessage } from './components/hooks/main';
+import { hendel_loading,handleCreate, registerMessage, setPeerToken, sendMessage } from './components/hooks/main';
 import './App.css'
 
 export default function App() {
@@ -10,6 +10,7 @@ export default function App() {
   const [myToken, setMyToken] = useState('');
   const [currentPage, setCurrentPage] = useState('welcome');
   const [mode,updateMode] = useState("")
+  const [connectionState,update_connectionState]  = useState(false);
 
   const establishConnection = (peerToken) => {
     setCurrentPage('Chat')
@@ -34,6 +35,7 @@ export default function App() {
   
   useEffect(()=>{
     registerMessage(setMessages);
+    hendel_loading(update_connectionState);
   },[])
 
   return (
@@ -66,6 +68,7 @@ export default function App() {
         onBack={()=>setCurrentPage('connect')}
         message={message}
         sendMessage={sendMessage}
+        connectionState={connectionState}
         />
       )}
       

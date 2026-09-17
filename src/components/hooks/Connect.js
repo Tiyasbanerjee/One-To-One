@@ -4,6 +4,7 @@ let peerConnection;
 let notifyMessage;
 let datachannel;
 
+
 export async function connectConnection(onmessage) {
     peerConnection = new RTCPeerConnection({ iceServers: [{ urls: 'stun:stun.l.google.com:19302' }]});
     notifyMessage = onmessage
@@ -15,12 +16,19 @@ export async function connectConnection(onmessage) {
             const msg = JSON.parse(e.data);
             const organized_msg = { type:"incomeing" , text:msg}
             notifyMessage(organized_msg)
+          
         }
 
         datachannel.onopen = () => {
-        connect_side_sendMessage("ready")
-        console.log('ready')
-        }
+        
+            setTimeout(() => {
+                connect_side_sendMessage("peer joined sucessfuly:")
+            }, 1000);
+            
+            setTimeout(()=>{
+                update_state(true)
+            },1000)
+    }
     }
 }
 
@@ -49,4 +57,9 @@ function iceGather(pc){
 
 export function connect_side_sendMessage(text) {
     datachannel.send(JSON.stringify(text));
+}
+
+let update_state = null
+export function connect_state_update_con(fun){
+update_state = fun
 }

@@ -71,3 +71,45 @@
     transform: translateY(10px);
     box-shadow: 1px 5px 1px rgba(0, 0, 0, 0.179);
 }
+
+.loading{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.load_icon_holder{
+    width: 50%;
+    max-width: 300px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+
+
+    border: 5px solid rgba(240, 242, 220, 0.512);
+    border-top: 5px solid #0099ff;
+    border-bottom: 5px solid red;
+    
+
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+.chat_blur{
+    filter: blur(10px);
+}

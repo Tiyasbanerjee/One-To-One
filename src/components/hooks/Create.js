@@ -15,8 +15,13 @@ export async function createConnection(onmessage) {
         notifyMessage(organized_msg)    
     };
     datachannel.onopen = () => {
-        create_side_sendMessage("ready")
-        console.log('ready')
+        setTimeout(() => {
+            create_side_sendMessage("Creater is ready to chat:")
+        }, 2000);
+        
+        setTimeout(()=>{
+            update_state(true)
+        },1000)
     }
 
     const offer = await peerConnection.createOffer();
@@ -47,4 +52,10 @@ export async function acceptAnswer(answer){
 
 export function create_side_sendMessage(text) {
     datachannel.send(JSON.stringify(text));
+}
+
+
+let update_state = null
+export function connect_state_update_cre(fun){
+update_state = fun
 }

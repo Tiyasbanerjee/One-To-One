@@ -4,7 +4,7 @@ import ChatBox from './ChatBox.jsx'
 
 import { useState } from 'react';
 
-export default function ChatRoom({onBack, message, sendMessage}) {
+export default function ChatRoom({onBack, message, sendMessage,connectionState}) {
 
   const [my_message,updateMyMessage] = useState('');
 
@@ -23,7 +23,8 @@ export default function ChatRoom({onBack, message, sendMessage}) {
   }
 
   return (
-    <div className={styles.contener}>
+    <>
+    <div className={`${styles.contener} ${!connectionState? styles.chat_blur : ''}`}>
       <Header onBack={onBack}/>
       <div className={styles.chatBox}>
         
@@ -49,6 +50,16 @@ export default function ChatRoom({onBack, message, sendMessage}) {
         </div>
 
       </div>
+
     </div>
+    {
+      !connectionState && (
+        <div className={styles.loading}>
+          <div className={styles.load_icon_holder}>
+          </div>
+        </div>
+      )
+    }
+    </>
   );
 }
