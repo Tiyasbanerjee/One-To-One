@@ -10,7 +10,7 @@ export default function WelcomeScreen({ connect, onReadDocs, create, join }){
             
             <h2 style={{color: '#7d63f3',marginBottom:'1cqh'}}><i><b>One-To-One</b></i></h2>
             
-            <img src="/AppIcon.svg" className={styles.icon}></img>
+            <img src="%BASE_URL%AppIcon.svg" className={styles.icon}></img>
 
             <h5 style={{color:'#415168'}}>
               This app provides you a medium to connect with your friends, or people you trust
