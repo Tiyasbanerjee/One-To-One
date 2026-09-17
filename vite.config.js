@@ -3,5 +3,5 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  base: './', // relative base because its single page site..
+  base: '/One-To-One/',
 });
