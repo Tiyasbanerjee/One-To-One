@@ -48,6 +48,10 @@
     backdrop-filter: blur(10px);
 }
 
+.inputFild::-webkit-scrollbar{
+    display: none;
+}
+
 
 .send_btn {
   height: 38px;

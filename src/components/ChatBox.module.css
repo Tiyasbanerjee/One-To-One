@@ -9,7 +9,9 @@
     overflow-y: auto;
 }
 
-
+.chatbox::-webkit-scrollbar{
+    display: none;
+}
 
 
 .messages_in,.messages_out{
