@@ -100,3 +100,13 @@ because you can use this, this is completely encrypted. You ask what the guarant
 you just need to exchange the keys yourself, because, as I said, it has no servers which can exchange the keys for you...
 
 Exchange the keys useing other chat apps.</h4>
+
+
+---
+
+<h2>to clone it and do experiments with run, </h2>
+
+`
+git clone https://github.com/Tiyasbanerjee/One-To-One.git
+
+`
