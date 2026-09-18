@@ -9,7 +9,7 @@ export default function App() {
   const [message, setMessages] = useState([]);
   const [myToken, setMyToken] = useState('');
   const [currentPage, setCurrentPage] = useState('welcome');
-  const [mode,updateMode] = useState("")
+  const [mode,updateMode] = useState("create")
   const [connectionState,update_connectionState]  = useState(false);
 
   const establishConnection = (peerToken) => {
@@ -22,9 +22,9 @@ export default function App() {
   }
 
   const updateMytoken = async () => {
+    updateMode('create');
     const token = await handleCreate();
     setMyToken(token);
-    updateMode('create');
   }
 
   const load = async (peerToken) => {
