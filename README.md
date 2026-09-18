@@ -2,6 +2,8 @@
 
 <h1><a href="https://chat.tiyas.uk" target="_blank">A handy wakiTalki</a></h1>
 
+# Demo video, click to play.
+
 [![Watch the video](https://img.youtube.com/vi/nqYTHVCMB1A/maxresdefault.jpg)](https://www.youtube.com/watch?v=nqYTHVCMB1A)
 
 ---
