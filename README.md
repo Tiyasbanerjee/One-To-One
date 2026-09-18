@@ -2,6 +2,10 @@
 
 <h1><a href="https://chat.tiyas.uk" target="_blank">A handy wakiTalki</a></h1>
 
+[![Watch the video](https://img.youtube.com/vi/nqYTHVCMB1A/maxresdefault.jpg)](https://www.youtube.com/watch?v=nqYTHVCMB1A)
+
+---
+
 <h1>How to use It?</h1>
 <h3>To use this you have to manually exchange the tokens first.</h3>
 <p>! (Note for devs: you can run this in two browser tabs , and innisiate the handshake, then send messages from one instance to another , no need for two seperate devices.)</p>
@@ -63,3 +67,18 @@ because you are shareing your public ip and device specs.
 in normal day stuffs like server bassed stuffs , where there is a server between two peers , you ussaly trust the server, But here insted of trusting a server you are trusting your peer/friend...
 
 thats the diffrence..
+
+---
+
+<h1>Summery</h1>
+<h4>One-to-one is a WebRTC-based chatting app which doesn't rely on any external servers for sending messages. 
+
+This provides you with an open-source codebase you can modify and use in your own terms.
+
+the key thing is that, it has no middleman, just you and your peer, so you dont need to trust if any app is providing end-to-end encryption,
+
+because you can use this, this is completely encrypted. You ask what the guarantee is, because the transport layer of WebRTC itself is completely encrypted. 
+
+you just need to exchange the keys yourself, because, as I said, it has no servers which can exchange the keys for you...
+
+Exchange the keys useing other chat apps.</h4>
