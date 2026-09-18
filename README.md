@@ -10,16 +10,34 @@
 <h3>To use this you have to manually exchange the tokens first.</h3>
 <p>! (Note for devs: you can run this in two browser tabs , and innisiate the handshake, then send messages from one instance to another , no need for two seperate devices.)</p>
 <h3>step1:-> choose between Create or Join:</h3>
+
+
+<img width="1142" height="903" alt="Screenshot_20260918_084158-2" src="https://github.com/user-attachments/assets/5df9df80-c385-4820-ab40-e86b8f0a933a" />
+
+
 <h4>-> If you want to create a chat instance, then click Create , and if your friend had alrady made the instance and now you want to join it, click Join. and if you want to see the code of it, or the GitHub , then click Docs</h4>
 <h3>step2:->You had either clicked create or join:</h3>
 <h4>
 -> If you had created a instance then you will see two boxes, the first one is showing your token, you should click on it to copy the token. and you have to send the token to your friend. and your friend will send theirs , you should enter that on the 2ed box, bellow the first one.
+
+
+<img width="1142" height="903" alt="Screenshot_20260918_084845-1" src="https://github.com/user-attachments/assets/c61c19b2-f381-4891-b6ac-9493ed8611db" />
+
+  
 <br/>
 <br/>
--> If you had joined a instance, then you would see a box bellow asking for the peer token, you should paste your peer token first , and click load, and you will see the first box got revilled , you should click on it to copy your token and send it to your friend/ who created the instence.
+-> If you had joined an instance, then you would see a box below asking for the peer token, you should paste your peer token first , and click load, and you will see the first box got revilled , you should click on it to copy your 
+
+<img width="1196" height="904" alt="Screenshot_20260918_085321-1" src="https://github.com/user-attachments/assets/944f23a4-8eb6-46a9-8786-c391f22918f2" />
+
+<img width="1196" height="904" alt="Screenshot_20260918_085637-1" src="https://github.com/user-attachments/assets/57ea6632-f93a-489d-a369-6bb973048bf7" />
+
+
+
+token and send it to your friend/ who created the instance.
 </h4>
 <h3>step3:-> you are done:</h3>
-<h4>now as soon as you will click confirm , you will eneter the chat room, and now you are free to chat offgrid. you will type messages and click send, and they will be securely transfered to your friend/peer.</h4>
+<h4>now as soon as you will click Confirm, you will eneter the chat room, and now you are free to chat off-grid. you will type messages and click send, and they will be securely transferred to your friend/peer.</h4>
 
 ---
 
