@@ -26,23 +26,24 @@
   
 <br/>
 <br/>
--> If you had joined an instance, then you would see a box below asking for the peer token, you should paste your peer token first , and click load, and you will see the first box got revilled , you should click on it to copy your 
+-> If you had joined an instance, then you would see a box below asking for the peer token, you should paste your peer token first , and click load, and you will see the first box got revilled, you should click on it to copy your token and send it to your friend/ who created the instance.
 
 <img width="1196" height="904" alt="Screenshot_20260918_085321-1" src="https://github.com/user-attachments/assets/944f23a4-8eb6-46a9-8786-c391f22918f2" />
 
 <img width="1196" height="904" alt="Screenshot_20260918_085637-1" src="https://github.com/user-attachments/assets/57ea6632-f93a-489d-a369-6bb973048bf7" />
 
 
-
-token and send it to your friend/ who created the instance.
 </h4>
 <h3>step3:-> you are done:</h3>
-<h4>now as soon as you will click Confirm, you will eneter the chat room, and now you are free to chat off-grid. you will type messages and click send, and they will be securely transferred to your friend/peer.</h4>
+<h4>now as soon as you will click Confirm, you will enter the chat room, and now you are free to chat off-grid. you will type messages and click send, and they will be securely transferred to your friend/peer.</h4>
+
+<img width="1909" height="1033" alt="Screenshot_20260918_090425" src="https://github.com/user-attachments/assets/3562df82-f4a7-4322-9287-ed62e918c4eb" />
+
 
 ---
 
 <h4><b>How i got the idea?</b></h4>
-one day , it's maybe a year ago, i listened that meta is removeing it's end to end enqureption from instragram chats.
+one day , it's maybe a year ago, i listened that meta is removeing it's end to end enqureption from Instagram chats.
 
 i knew that young people loved to use instragram type of chats , specialy young couples for privacy reasons.
 
