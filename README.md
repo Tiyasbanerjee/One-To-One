@@ -106,7 +106,8 @@ Exchange the keys useing other chat apps.</h4>
 
 <h2>to clone it and do experiments with run, </h2>
 
-`
+```
+
 git clone https://github.com/Tiyasbanerjee/One-To-One.git
 
-`
+```
