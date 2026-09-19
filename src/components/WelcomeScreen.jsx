@@ -23,6 +23,11 @@ export default function WelcomeScreen({ connect, onReadDocs, create, join }){
             <h4 style={{color:'#155cc1',marginBottom:'1cqh',marginTop:'1cqh'}}>Usage Guide</h4>
             
             <h5 style={{color:'#4b596a'}}>
+              <b><i> note that:- this will not work offline, or if WebRtc is 
+              disabled.
+              and if your internet is slow try waiting for 3-5 seconds.</i></b>
+              <br/>
+              <br/>
               1. You can create a chat or join a chat
               <br/>
               2. you can see a text, copy and send this to 
