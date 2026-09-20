@@ -24,9 +24,9 @@ export default function ChatRoom({onBack, message, sendMessage,connectionState})
 
   return (
     <>
-    <div className={`${styles.contener} ${!connectionState? styles.chat_blur : ''}`}>
+    <div className={styles.contener}>
       <Header onBack={onBack}/>
-      <div className={styles.chatBox}>
+      <div className={`${styles.chatBox} ${!connectionState? styles.chat_blur : ''}`}>
         
         <ChatBox message={message}/>
 
