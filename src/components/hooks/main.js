@@ -3,12 +3,15 @@ import { connectConnection, acceptOffer, connect_side_sendMessage ,connect_state
 
 import LZString from 'lz-string';
 
-let mode = 'connect'
+let mode;
+
+export const setMODE = (given_mode) => {
+    mode = given_mode
+};
 
 export const handleCreate = async () => {
     connect_state_update_cre(connection_state_fun)
     
-    mode = "create"
     const token = await createConnection( message_update );
     const compressed = LZString.compressToBase64(token);
     return `|${compressed}|`
@@ -38,11 +41,10 @@ export const setPeerToken = async (token) => {
     const un_compressed = LZString.decompressFromBase64(compressed)
     const answer = JSON.parse(un_compressed)
 
-    console.log(answer)
     
     if(mode==='create'){
         await acceptAnswer(answer)
-    }else{
+    }else if(mode==='connect_2'){
         return hendelConnection(answer)
     }
 }
@@ -51,7 +53,7 @@ export const setPeerToken = async (token) => {
 export const sendMessage = (message) => {
     if (mode === 'create') {
         create_side_sendMessage(message);
-    } else {
+    } else if(mode==='connect_2'){
         connect_side_sendMessage(message);
     }
     message_update({ type: 'outgoing', text: message });

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import Welcome_screen from './components/WelcomeScreen';
 import ConnectPage from './components/ConnectPage';
 import Chat from './components/ChatRoom'
-import { hendel_loading,handleCreate, registerMessage, setPeerToken, sendMessage } from './components/hooks/main';
+import { hendel_loading,handleCreate, registerMessage, setPeerToken, sendMessage, setMODE } from './components/hooks/main';
 import './App.css'
 
 export default function App() {
@@ -12,27 +12,42 @@ export default function App() {
   const [mode,updateMode] = useState("create")
   const [connectionState,update_connectionState]  = useState(false);
 
+  const modeUPdateHelper = (mode_name) =>{
+    updateMode(mode_name)
+    setMODE(mode_name) // because the task is not rendering, so we cant weast time waiting for mode to be updated. (processing task...)
+  }
+
   const establishConnection = (peerToken) => {
     setCurrentPage('Chat')
+
     if(mode==="create"){setPeerToken(peerToken)}
   }
 
-  const hendelConnection = () => {
-    updateMode('connect');
-  }
+
 
   const updateMytoken = async () => {
-    updateMode('create');
+    modeUPdateHelper('create');
+    update_connectionState(false)
+    
     const token = await handleCreate();
     setMyToken(token);
   }
+  
 
+
+  const hendelConnection = () => {
+    update_connectionState(false)
+    //no prep is needed, peer will provide the init steps,.
+    modeUPdateHelper('connect');
+  }
   const load = async (peerToken) => {
-    updateMode("connect_2")
+    modeUPdateHelper("connect_2")
     const a = await setPeerToken(peerToken)
     setMyToken(a)
   }
   
+
+
   useEffect(()=>{
     registerMessage(setMessages);
     hendel_loading(update_connectionState);
